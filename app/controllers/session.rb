@@ -5,6 +5,7 @@ get '/session/new' do
 end
 
 post '/session' do
+
   if @user = User.find_by(email: params[:user][:email])
     p @user
     session[:user_id] = @user.id

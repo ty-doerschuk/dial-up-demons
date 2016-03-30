@@ -1,5 +1,12 @@
 <h1><%= @question.title.capitalize %></h1>
 
+<form for="votes" action="/questions/<%= @question.id %>/votes" method='post'>
+  <input type="submit" name="vote" value="vote up">
+  <input type="submit" name="vote" value="vote down">
+</form>
+
+<p><%= @question.votes.count %></p>
+
 <div class="question">
   <p>
     <%= @question.text %>

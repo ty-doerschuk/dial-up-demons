@@ -18,18 +18,6 @@
   <title></title>
 </head>
 <body>
-  <nav class="navbar">
-   <a class="font-face" href='/'>FLASHDANCE</a>
-   <div class="other-nav-links">
-    <% if logged_in? %>
-      <a href='/users/<%= session[:user_id] %>'><%=current_user.username.upcase%><a>
-      <a href='/logout'>LOGOUT</a>
-    <% else %>
-      <a href='/users/new'>REGISTER</a>
-      <a href='/login'>LOGIN</a>
-    <% end %>
-    </div>
-  </nav>
   <%= yield %>
 </body>
 </html>

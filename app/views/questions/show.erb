@@ -1,0 +1,15 @@
+<h1><%= @question.title.capitalize %></h1>
+
+<div class="question">
+  <p>
+    <%= @question.text %>
+  </p>
+</div>
+
+<div class="comments">
+  <ul>
+    <% @question.comments.each do |comment| %>
+    <li><%= comment.text %></li>
+    <% end %>
+  </ul>
+</div>

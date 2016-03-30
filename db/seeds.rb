@@ -14,16 +14,19 @@
   c.save!
 end
 
+count = 1
+
 @baby_questions.each do |q|
   q.author = User.find_by(id: (1..10).to_a.sample)
-  q.comments << Comment.find_by(id: (1..10).to_a.sample)
+  q.comments << Comment.find(count)
+  count += 1
   q.save!
 end
 
 @baby_answers.each do |a|
   a.author = User.find_by(id: (1..10).to_a.sample)
   a.question = Question.find_by(id: (1..10).to_a.sample)
-  a.comments << Comment.find_by(id: (1..10).to_a.sample)
+  #a.comments << Comment.find_by(id: (1..10).to_a.sample)
   a.save!
 end
 

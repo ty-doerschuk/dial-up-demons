@@ -11,7 +11,8 @@ post '/users' do
     session[:user_id] = @user.id
     redirect "/users/#{@user.id}" #redirect back to users index page
   else
-    # @errors = errors.full_messages
+    @errors = @user.errors.full_messages
+    # @errors = @entry.errors.full_messages
     erb :'users/new' # show new users view again(potentially displaying errors)
   end
 end

@@ -1,0 +1,16 @@
+<div class="index-container">
+<% if logged_in? %>
+  <a class="new-deck"href="/decks/new">Make a new deck</a>
+<%end%>
+
+<ol class="deck-list">
+<%@decks.each do |deck|%>
+  <li class="new-deck"><a href='/decks/<%=deck.id%>/round/new'><%=deck.theme_name.upcase%></a><br>by<br><a href='/users/<%=deck.creator_id%>'>
+    <span class="creator"><%=deck.creator.username%></a></span>
+  <%if current_user == deck.creator%>
+    <br><span><a href = "/decks/<%=deck.id%>/edit">Edit</a></span>
+    <span><a href="/decks/<%=deck.id%>/delete">Delete</a></span></li>
+    <%end%>
+  <%end%>
+</ol>
+</div>

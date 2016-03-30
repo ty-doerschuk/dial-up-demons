@@ -1,0 +1,16 @@
+<h1></h1>
+
+<div class="answer">
+  <p>
+    <%= @answer.text %>
+  </p>
+</div>
+
+<h2>Comments</h2>
+<div class="comments">
+  <ul>
+    <% @answer.comments.each do |comment| %>
+    <li><%= comment.text %></li>
+    <% end %>
+  </ul>
+</div>

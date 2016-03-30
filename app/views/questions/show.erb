@@ -10,10 +10,20 @@
 <div class="answers">
   <ul>
     <% @question.answers.each do |answer| %>
-    <li><%= answer.text %></li>
+    <li><a href="/answers/<%= answer.id %>"><%= answer.text %></a></li>
+      <ul>
+      <li><% answer.comments.each do |answer_comment| %>
+        <%= "-- \"" + answer_comment.text + "\"" %>
+      <% end %></li>
+        </ul>
     <% end %>
   </ul>
 </div>
+
+<form method="GET" action="/answers/new">
+  <input type="hidden" name="question_id" value="<%= @question.id %>">
+  <input type="submit" value="ANSWER THIS QUESTION!!">
+</form>
 
 <h2>Comments</h2>
 <div class="comments">

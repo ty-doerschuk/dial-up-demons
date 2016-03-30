@@ -11,5 +11,6 @@
 <form method="post" action="/questions">
 <input name="question[title]" type="text" placeholder="Title"><br>
 <textarea name="question[text]" type="text"></textarea><br>
+<input type="hidden" name="question[author_id]" value="session[:user_id]">
 <input type="submit" value="Ask new question!">
 </form>

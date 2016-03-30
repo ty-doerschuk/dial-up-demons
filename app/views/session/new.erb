@@ -1,3 +1,9 @@
+<% if @errors %>
+  <div class="errors-wrapper">
+    <span>Something went wrong: Please try again.</span>
+<% end %>
+
+
 <form action="/session" method="post">
   <label for="email">Email</label>
   <input id="email" name="user[email]" type="text" value="<%= @user.try(:email)%>">

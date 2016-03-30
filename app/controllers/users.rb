@@ -8,10 +8,11 @@ post '/users' do
   #below works with properly formatted params in HTML form
   @user = User.new(params[:user]) #create new user
   if @user.save #saves new user or returns false if unsuccessful
-    session[user_id] = @user.id
+    session[:user_id] = @user.id
     redirect "/users/#{@user.id}" #redirect back to users index page
   else
-    # @errors = errors.full_messages
+    @errors = @user.errors.full_messages
+    # @errors = @entry.errors.full_messages
     erb :'users/new' # show new users view again(potentially displaying errors)
   end
 end

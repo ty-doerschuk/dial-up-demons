@@ -1,0 +1,11 @@
+body {
+  text-align: center;
+}
+
+li {
+  list-style-type: none;
+}
+
+.add-question {
+  text-decoration: none;
+}

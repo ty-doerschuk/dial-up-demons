@@ -32,4 +32,10 @@
     <li><%= comment.text %></li>
     <% end %>
   </ul>
+
+<form method="GET" action="/comments/new">
+  <input type="hidden" name="question_id" value="<%= @question.id %>">
+  <input type="hidden" name="type" value="Question">
+  <input type="submit" value="Comment!">
+</form>
 </div>

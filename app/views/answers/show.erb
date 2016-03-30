@@ -6,6 +6,12 @@
   </p>
 </div>
 
+<form method="GET" action="/comments/new">
+  <input type="hidden" name="answer_id" value="<%= @answer.id %>">
+  <input type="hidden" name="type" value="Answer">
+  <input type="submit" value="Comment!">
+</form>
+
 <h2>Comments</h2>
 <div class="comments">
   <ul>

@@ -1,0 +1,179 @@
+@font-face {
+    font-family: flashdance;
+    src: url(/font/xtreem_2.ttf);
+}
+
+body {
+  font-family: impact;
+  background: #FFEAF2;
+  font-size: 25px;
+  padding: 20px 20px 20px 20px;
+  background: -webkit-linear-gradient(#FFEAF2, #FF7EB2);
+  text-align: center;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+html{
+  height: 100%;
+  width: 100%;
+}
+
+h1 {
+  font-family: flashdance;
+}
+
+.navbar {
+  font-family: impact;
+  position: relative;
+  display: inline-block;
+  text-align: right;
+  padding-top: 15px;
+  width: 100%;
+  height: 40px;
+}
+.index-container{
+  margin-top: 50px;
+  margin-left: 20%;
+  margin-right:20%;
+  text-align: center;
+  min-width: 200px;
+}
+
+.deck-list{
+  padding:20px;
+  margin-left: -7%;
+  list-style-type: none;
+}
+
+.deck-list a{
+  text-decoration: none;
+}
+.deck-list a:hover{
+  color: #D3729B;
+}
+.deck-list li{
+  margin: 20px 20px 20px 20px;
+  height: 120px;
+  padding-bottom: 20px;
+  color: black;
+}
+
+.new-deck{
+  text-decoration: none;
+  border: 2px solid  #FF7EB2;
+  padding: 5px;
+  width: 200px;
+  text-align: center;
+  border-radius: 4px;
+  color: white;
+  background-color: #FF7EB2;
+}
+
+.new-deck:hover{
+  box-shadow: 5px 5px 5px #888888;
+}
+.navbar a{
+  margin-right: 20px;
+  text-decoration: none;
+  color: white;
+  font-weight: 700;
+  font-size: 2em;
+
+}
+
+.navbar a:hover{
+
+}
+
+.new-deck {
+  display: inline-block;
+  margin-top: 5%;
+}
+
+
+.navbar {
+  font-family: flashdance;
+   -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FF1177, 0 0 70px #FF1177, 0 0 80px #FF1177, 0 0 100px #FF1177, 0 0 150px #FF1177;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FF1177, 0 0 35px #FF1177, 0 0 40px #FF1177, 0 0 50px #FF1177, 0 0 75px #FF1177;
+}
+
+.navbar a {
+  font-family: flashdance;
+  font-size: 60px;
+}
+
+.font-face {
+  float: left;
+  padding-left: 10px;
+}
+
+.gameplay {
+  margin-top: 100px;
+}
+
+.gameplay h2 {
+  margin: 30px auto;
+}
+
+.question {
+  font-family: flashdance;
+  font-size: 50px;
+  margin: 30px auto;
+}
+
+form {
+  font-size: 30px;
+}
+
+input {
+  text-align: center;
+  margin: 10px auto;
+  padding: 20px 20px 20px 20px;
+  border-radius: 20px;
+}
+
+.submit-button {
+  margin-top: 20px;
+}
+
+table {
+  margin: 0px auto 0px auto;
+  padding-top: 0px;
+  border: 1px solid black;
+}
+
+th {
+  background-color: white;
+}
+
+td {
+  border: 1px solid black;
+  padding: 0px 70px 0px 70px;
+  background-color: rgba(255,255,255,0.4)
+}
+
+.deck-title {
+  font-family: flashdance;
+  font-size: 30px;
+  margin-bottom: 0px;
+  padding-bottom: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:visited {
+  color: white;
+}
+
+a:hover {
+  color: black;
+}

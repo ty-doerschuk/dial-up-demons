@@ -1,0 +1,49 @@
+
+<br>
+<form method="post" action="/decks/<%=@deck.id%>">
+  <input type="hidden" name="_method" value="put">
+  <label for="theme_name">Theme:</label>
+  <input type="text" name="theme_name"
+  value="<%=@deck.theme_name%>" >
+  <input type="submit" value="Edit">
+</form>
+
+<%if @errors%>
+<ul>
+  <%@errors.each do |error|%>
+  <li><%=error%></li>
+  <%end%>
+</ul>
+<%end%>
+<ol>
+  <%@deck.most_recent.each do |card|%>
+  <li>
+   <form method="post" action="/decks/<%=@deck.id%>/cards">
+    <input type="hidden" name="_method" value="put">
+    <input type="hidden" name="card_id" value="<%=card.id%>">
+    <input type="text" name="question"
+    value="<%=card.question%>" >
+    <input type="text" name="answer" value="<%=card.answer%>">
+    <input type="submit" value="Edit">
+  </form>
+  <form method="post" action='/decks/<%=@deck.id%>/cards'>
+    <input type="hidden" name="_method" value="delete">
+    <input type="hidden" name="card_id" value="<%=card.id%>">
+    <input type="submit" value="Delete">
+  </form>
+</li>
+<%end%>
+</ol>
+
+<h4>Make a new card:</h4>
+<form method='post' action='/decks/<%=@deck.id%>/cards'>
+  <input type="text" name="card[question]" placeholder="question">
+  <input type="text" name="card[answer]" placeholder="answer">
+  <input type="submit" value="create">
+</form>
+<br>
+
+<form method='get' action='/decks'>
+  <input type="submit" value="Finish">
+</form>
+

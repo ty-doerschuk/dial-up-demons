@@ -1,0 +1,14 @@
+<div class='gameplay'>
+  <h2>You are playing: <%= @round.deck.theme_name %></h2>
+
+  <p class='question'><%= @question %></p>
+
+  <form method="post" action="/rounds">
+    <input type="hidden" name="round_id" value="<%= @round.id %>">
+    <input type="hidden" name="card_id" value="<%= @card.id %>">
+    <input type="text" name="player_answer" placeholder="answer">
+    <input class='submit-button' type="submit" value="Place Guess">
+  </form>
+
+  <p><%= @message %></p>
+</div>

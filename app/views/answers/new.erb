@@ -1,0 +1,8 @@
+<form method="post" action="/answers">
+<input name="question_title" type="text" value="<%= @question.title %>" readonly="true" width="70"><br>
+<textarea name="question_text" type="text" readonly="true"><%= @question.text %></textarea><br>
+<textarea name="answer[text]" type="text" placeholder="Answer"></textarea><br>
+<input type="hidden" name="answer[author_id]" value="session[:user_id]">
+<input type="hidden" name="answer[question_id]" value="<%= @question.id %>">
+<input type="submit" value="Answer da muhfuckin question!">
+</form>

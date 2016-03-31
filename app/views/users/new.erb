@@ -7,20 +7,18 @@
       <% end %>
     </ul>
 <% end %>
+<form id="registration" action="/users" method="post">
+  <label for="new_username">Screen Name: </label>
+  <input id="new_username" name="user[username]" type="text" value="<%= @user.try(:username)%>"><br>
 
-<form action="/users" method="post">
-  <label for="new_username">Username</label>
-  <input id="new_username" name="user[username]" type="text" value="<%= @user.try(:username)%>">
+  <label for="new_email">E-Mail: </label>
+  <input id="new_email" name="user[email]" type="text" value="<%= @user.try(:email)%>"><br>
 
-  <label for="new_email">Email</label>
-  <input id="new_email" name="user[email]" type="text" value="<%= @user.try(:email)%>">
+  <label for="new_password">PassWord: </label>
+  <input id="new_password" name="user[password]" type="password"><br>
 
-  <label for="new_password">Password</label>
-  <input id="new_password" name="user[password]" type="password">
+  <label for="new_status">Status: </label>
+  <input id="new_status" name="user[status]" type="text" value="<%= @user.try(:status)%>"><br>
 
-  <label for="new_status">status</label>
-  <input id="new_status" name="user[status]" type="text" value="<%= @user.try(:status)%>">
-
-  <input type="submit" value="Register">
+  <input id="sign-up-button" type="submit" value="Register">
 </form>
-

@@ -1,1 +1,7 @@
-Hello World ya candy ass
+<h1><%= @user.username.capitalize %>'s Profile</h1>
+<h2>My Questions</h2>
+<% @user.questions.each do |q| %>
+  <%= q.title %>
+<% end %>
+<h2>My Answers</h2>
+<h2>My Comments</h2>

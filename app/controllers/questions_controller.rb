@@ -4,6 +4,7 @@ get '/questions' do
 end
 
 get '/questions/new' do
+  @user = User.find(session[:user_id])
   if request.xhr?
     erb :'questions/_new', layout: false
   else

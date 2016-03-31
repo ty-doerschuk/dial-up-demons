@@ -7,9 +7,12 @@
 <% end %>
 </ul>
 
-<div class="add-q-form">
-<a class="add-question" href="/questions/new"><h3>Add your own question!</h3></a><br><br>
-</div>
+<% if logged_in? %>
+  <div class="add-q-form">
+    <a class="add-question" href="/questions/new"><h3>Add your own question!</h3></a>
+    <br><br>
+  </div>
+<% end %>
 
 <center><img src="/images/q_mark.gif-c200"></center><br><br>
 <audio src="/audio/enter.ogg" preload="auto" type="audio/ogg" autoplay></audio>

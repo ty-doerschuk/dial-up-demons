@@ -1,10 +1,11 @@
 <h1><%= question.title.capitalize %></h1>
 
-
-<form for="votes" action="/questions/<%= @question.id %>/votes" method='post'>
-  <input class="vote up" type="image" name="vote" value="vote up" src="/images/up.gif-c200" width="5%" height="5%">
-  <input class="vote down" type="image" name="vote" value="vote down" src="/images/down.gif-c200" width="5%" height="5%">
-</form>
+<% if logged_in? %>
+  <form for="votes" action="/questions/<%= @question.id %>/votes" method='post'>
+    <input class="vote up" type="image" name="vote" value="vote up" src="/images/up.gif-c200" width="5%" height="5%">
+    <input class="vote down" type="image" name="vote" value="vote down" src="/images/down.gif-c200" width="5%" height="5%">
+  </form>
+<% end %>
 
 <p class="votes-text" id="question-votes">Votes: <%= @question.votes.count %></p>
 
@@ -29,17 +30,19 @@
     <% end %>
   </ul>
 
-<form method="GET" action="/comments/new">
-  <input type="hidden" name="question_id" value="<%= @question.id %>">
-  <input type="hidden" name="type" value="Question">
-  <input type="submit" value="Comment!">
-</form>
+<% if logged_in? %>
+  <form method="GET" action="/comments/new">
+    <input type="hidden" name="question_id" value="<%= @question.id %>">
+    <input type="hidden" name="type" value="Question">
+    <input type="submit" value="Comment!">
+  </form>
+<% end %>
+
 </div>
 
 <h2>Answers</h2>
 <div class="answers">
   <ul>
-
     <% @question.answers.each do |answer| %>
     <li><a href="/answers/<%= answer.id %>">"<%= answer.text %>"</a> - 
       <%= answer.author.username %>
@@ -54,20 +57,24 @@
       <% end %></li>
       </ul>
       <p id="answer-<%= answer.id %>-votes">Votes: <%= answer.votes.count %></p>
-      <form for="votes" action="/answers/<%= answer.id %>/votes" method='post'>
-        <input class="vote up" type="image" name="vote" value="vote up" src="/images/up.gif-c200" width="2%" height="5%">
-        <input class="vote down" type="image" name="vote" value="vote down" src="/images/down.gif-c200" width="2%" height="5%">
-      </form>
+        <% if logged_in? %>
+          <form for="votes" action="/answers/<%= answer.id %>/votes" method='post'>
+            <input class="vote up" type="image" name="vote" value="vote up" src="/images/up.gif-c200" width="5%" height="5%">
+            <input class="vote down" type="image" name="vote" value="vote down" src="/images/down.gif-c200" width="5%" height="5%">
+          </form>
+        <% end %>
     </li>
       
     <% end %>
   </ul>
 </div>
 
-<form method="GET" action="/answers/new">
-  <input type="hidden" name="question_id" value="<%= question.id %>">
-  <input type="submit" value="ANSWER THIS QUESTION!!">
-</form>
+<% if logged_in? %>
+  <form method="GET" action="/answers/new">
+    <input type="hidden" name="question_id" value="<%= question.id %>">
+    <input type="submit" value="ANSWER THIS QUESTION!!">
+  </form>
+<% end %>
 
 <br><br>
 <center><img src="/images/rad.gif"></center><br><br>

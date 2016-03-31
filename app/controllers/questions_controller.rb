@@ -4,23 +4,32 @@ get '/questions' do
 end
 
 get '/questions/new' do
-  @user = User.find(session[:user_id])
-  if request.xhr?
-    erb :'questions/_new', layout: false
+  if logged_in?
+    #add errors/redirect saying you need to log in
+    @user = User.find(session[:user_id])
+    if request.xhr?
+      erb :'questions/_new', layout: false
+    else
+      erb :'questions/new'
+    end
   else
-    erb :'questions/new'
+    redirect '/session/new'
   end
 end
 
 post '/questions' do
-  @new_question = Question.new(params[:question])
-  if request.xhr?
-    if @new_question.save
-      erb :"questions/_new_post", layout: false, locals: { question: @new_question }
-    else
-      @errors = @new_question.errors.full_messages
-      erb :'questions/new'
+  if logged_in?
+    @new_question = Question.new(params[:question])
+    if request.xhr?
+      if @new_question.save
+        erb :"questions/_new_post", layout: false, locals: { question: @new_question }
+      else
+        @errors = @new_question.errors.full_messages
+        erb :'questions/new'
+      end
     end
+  else
+    redirect '/session/new'
   end
 end
 
@@ -41,17 +50,21 @@ get '/questions/:id' do
 end
 
 post '/questions/:id/votes' do
-  @question = Question.find(params[:id])
-  if params[:vote] == "vote up"
-    new_vote = @question.votes.build(voter: current_user).save
-  elsif params[:vote] == "vote down"
-    if @question.votes.count > 0
-      @question.votes.first.destroy
+  if logged_in?
+    @question = Question.find(params[:id])
+    if params[:vote] == "vote up"
+      new_vote = @question.votes.build(voter: current_user).save
+    elsif params[:vote] == "vote down"
+      if @question.votes.count > 0
+        @question.votes.first.destroy
+      end
     end
-  end
-  if request.xhr?
-    "Votes: #{@question.votes.count}"
+    if request.xhr?
+      "Votes: #{@question.votes.count}"
+    else
+      redirect "/questions/#{params[:id]}"
+    end
   else
-    redirect "/questions/#{params[:id]}"
+    redirect '/session/new'
   end
 end

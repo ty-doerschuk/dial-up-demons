@@ -25,18 +25,11 @@ end
 post '/questions/:id/votes' do
   @question = Question.find(params[:id])
   if params[:vote] == "vote up"
-    p "+++++++++++++++++++++++++++++"
-    p 'current user id'
-    p current_user.id
-    p "up vote!"
-    p @question.votes.count
-    p 'votes build below'
-    p @question.votes.build(voter: current_user)
-    p @question.votes.count
+    new_vote = @question.votes.build(voter: current_user).save
   elsif params[:vote] == "vote down"
-    if @question.votes.count < 0
+    if @question.votes.count > 0
       @question.votes.first.destroy
     end
   end
-  erb :"/questions/show"
+  redirect "/questions/#{params[:id]}"
 end

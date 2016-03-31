@@ -5,7 +5,7 @@
   <input class="vote down" type="submit" name="vote" value="vote down">
 </form>
 
-<p>Votes: <%= @question.votes.count %></p>
+<p id="question-votes">Votes: <%= @question.votes.count %></p>
 
 <div class="question">
   <p>
@@ -33,7 +33,7 @@
   <ul>
     <% @question.answers.each do |answer| %>
     <li><a href="/answers/<%= answer.id %>"><%= answer.text %></a>
-      <p>Votes: <%= answer.votes.count %></p>
+      <p id="answer-<%= answer.id %>-votes">Votes: <%= answer.votes.count %></p>
       <form for="votes" action="/answers/<%= answer.id %>/votes" method='post'>
         <input class="vote up"type="submit" name="vote" value="vote up">
         <input class="vote down"type="submit" name="vote" value="vote down">

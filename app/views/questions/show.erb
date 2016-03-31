@@ -1,4 +1,4 @@
-<h1><%= question.title.capitalize %></h1>
+<h1><%= @question.title.capitalize %></h1>
 
 <% if logged_in? %>
   <form for="votes" action="/questions/<%= @question.id %>/votes" method='post'>
@@ -11,17 +11,17 @@
 
 <div class="question">
   <p>
-    <%= question.text %>
+    <%= @question.text %>
   </p>
   <p>
-    Posted By: <%= question.author.username %>
+    Posted By: <%= @question.author.username %>
   </p>
 </div>
 
 <h2>Comments</h2>
 <div class="comments">
   <ul>
-    <% if question.comments.length == 0 %>
+    <% if @question.comments.length == 0 %>
       There are no comments!<br>
       Be the first commenter!<br>
     <% end %>
@@ -41,39 +41,43 @@
 </div>
 
 <h2>Answers</h2>
-<div class="answers">
-  <ul>
-    <% @question.answers.each do |answer| %>
-    <li><a href="/answers/<%= answer.id %>">"<%= answer.text %>"</a> - 
-      <%= answer.author.username %>
-      <% if @question.favorite_answer.id == answer.id %>
-          <img src="/images/estrella.gif" height="2%" width="2%">
-      <% end %>
-      <br><br>
-      Comments
-      <ul>
-      <li id="comments"><% answer.comments.each do |answer_comment| %>
-        <%= "-- \"" + answer_comment.text + "\"" %> - <%= answer_comment.author.username %>
-      <% end %></li>
-      </ul>
-      <p id="answer-<%= answer.id %>-votes">Votes: <%= answer.votes.count %></p>
-        <% if logged_in? %>
-          <form for="votes" action="/answers/<%= answer.id %>/votes" method='post'>
-            <input class="vote up" type="image" name="vote" value="vote up" src="/images/up.gif-c200" width="5%" height="5%">
-            <input class="vote down" type="image" name="vote" value="vote down" src="/images/down.gif-c200" width="5%" height="5%">
-          </form>
+<% if @question.answers.length > 0 %>
+  <div class="answers">
+    <ul>
+      <% @question.answers.each do |answer| %>
+      <li><a href="/answers/<%= answer.id %>">"<%= answer.text %>"</a> - 
+        <%= answer.author.username %>
+        <% if @question.favorite_answer.id == answer.id %>
+            <img src="/images/estrella.gif" height="2%" width="2%">
         <% end %>
-    </li>
-      
-    <% end %>
-  </ul>
-</div>
+        <br><br>
+        Comments
+        <ul>
+        <li id="comments"><% answer.comments.each do |answer_comment| %>
+          <%= "-- \"" + answer_comment.text + "\"" %> - <%= answer_comment.author.username %>
+        <% end %></li>
+        </ul>
+        <p id="answer-<%= answer.id %>-votes">Votes: <%= answer.votes.count %></p>
+          <% if logged_in? %>
+            <form for="votes" action="/answers/<%= answer.id %>/votes" method='post'>
+              <input class="vote up" type="image" name="vote" value="vote up" src="/images/up.gif-c200" width="5%" height="5%">
+              <input class="vote down" type="image" name="vote" value="vote down" src="/images/down.gif-c200" width="5%" height="5%">
+            </form>
+          <% end %>
+      </li>
+        
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
 <% if logged_in? %>
-  <form method="GET" action="/answers/new">
-    <input type="hidden" name="question_id" value="<%= question.id %>">
-    <input type="submit" value="ANSWER THIS QUESTION!!">
-  </form>
+  <% unless session[:user_id] == @question.author.id %>
+    <form method="GET" action="/answers/new">
+      <input type="hidden" name="question_id" value="<%= question.id %>">
+      <input type="submit" value="ANSWER THIS QUESTION!!">
+    </form>
+  <% end %>
 <% end %>
 
 <br><br>

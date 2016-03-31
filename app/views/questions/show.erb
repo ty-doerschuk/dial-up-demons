@@ -12,13 +12,16 @@
   <p>
     <%= question.text %>
   </p>
+  <p>
+    Posted By: <%= question.author.username %>
+  </p>
 </div>
 
 <h2>Comments</h2>
 <div class="comments">
   <ul>
     <% @question.comments.each do |comment| %>
-    <li><%= comment.text %></li>
+    <li> -- "<%= comment.text %>" - <%= comment.author.username %> </li>
     <% end %>
   </ul>
 
@@ -34,18 +37,25 @@
   <ul>
 
     <% @question.answers.each do |answer| %>
-    <li><a href="/answers/<%= answer.id %>"><%= answer.text %></a>
+    <li><a href="/answers/<%= answer.id %>">"<%= answer.text %>"</a> - 
+      <%= answer.author.username %>
+      <% if @question.favorite_answer.id == answer.id %>
+          <img src="/images/estrella.gif" height="2%" width="2%">
+      <% end %>
+      <br><br>
+      Comments
+      <ul>
+      <li id="comments"><% answer.comments.each do |answer_comment| %>
+        <%= "-- \"" + answer_comment.text + "\"" %> - <%= answer_comment.author.username %>
+      <% end %></li>
+      </ul>
       <p id="answer-<%= answer.id %>-votes">Votes: <%= answer.votes.count %></p>
       <form for="votes" action="/answers/<%= answer.id %>/votes" method='post'>
-        <input class="vote up" type="image" name="vote" value="vote up" src="/images/up.gif-c200" width="5%" height="5%">
-        <input class="vote down" type="image" name="vote" value="vote down" src="/images/down.gif-c200" width="5%" height="5%">
+        <input class="vote up" type="image" name="vote" value="vote up" src="/images/up.gif-c200" width="2%" height="5%">
+        <input class="vote down" type="image" name="vote" value="vote down" src="/images/down.gif-c200" width="2%" height="5%">
       </form>
     </li>
-      <ul>
-      <li><% answer.comments.each do |answer_comment| %>
-        <%= "-- \"" + answer_comment.text + "\"" %>
-      <% end %></li>
-        </ul>
+      
     <% end %>
   </ul>
 </div>

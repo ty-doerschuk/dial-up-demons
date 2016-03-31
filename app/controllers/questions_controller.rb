@@ -23,6 +23,8 @@ get '/questions/:id' do
 end
 
 post '/questions/:id/votes' do
+  p "========================"
+  p params
   @question = Question.find(params[:id])
   if params[:vote] == "vote up"
     new_vote = @question.votes.build(voter: current_user).save

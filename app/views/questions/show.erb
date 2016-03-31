@@ -1,8 +1,8 @@
 <h1><%= @question.title.capitalize %></h1>
 
 <form for="votes" action="/questions/<%= @question.id %>/votes" method='post'>
-  <input type="submit" name="vote" value="vote up">
-  <input type="submit" name="vote" value="vote down">
+  <input class="vote up" type="submit" name="vote" value="vote up">
+  <input class="vote down" type="submit" name="vote" value="vote down">
 </form>
 
 <p>Votes: <%= @question.votes.count %></p>
@@ -12,25 +12,6 @@
     <%= @question.text %>
   </p>
 </div>
-
-<h2>Answers</h2>
-<div class="answers">
-  <ul>
-    <% @question.answers.each do |answer| %>
-    <li><a href="/answers/<%= answer.id %>"><%= answer.text %></a></li>
-      <ul>
-      <li><% answer.comments.each do |answer_comment| %>
-        <%= "-- \"" + answer_comment.text + "\"" %>
-      <% end %></li>
-        </ul>
-    <% end %>
-  </ul>
-</div>
-
-<form method="GET" action="/answers/new">
-  <input type="hidden" name="question_id" value="<%= @question.id %>">
-  <input type="submit" value="ANSWER THIS QUESTION!!">
-</form>
 
 <h2>Comments</h2>
 <div class="comments">
@@ -46,3 +27,29 @@
   <input type="submit" value="Comment!">
 </form>
 </div>
+
+<h2>Answers</h2>
+<div class="answers">
+  <ul>
+    <% @question.answers.each do |answer| %>
+    <li><a href="/answers/<%= answer.id %>"><%= answer.text %></a>
+      <p>Votes: <%= answer.votes.count %></p>
+      <form for="votes" action="/answers/<%= answer.id %>/votes" method='post'>
+        <input class="vote up"type="submit" name="vote" value="vote up">
+        <input class="vote down"type="submit" name="vote" value="vote down">
+      </form>
+    </li>
+      <ul>
+      <li><% answer.comments.each do |answer_comment| %>
+        <%= "-- \"" + answer_comment.text + "\"" %>
+      <% end %></li>
+        </ul>
+    <% end %>
+  </ul>
+</div>
+
+<form method="GET" action="/answers/new">
+  <input type="hidden" name="question_id" value="<%= @question.id %>">
+  <input type="submit" value="ANSWER THIS QUESTION!!">
+</form>
+

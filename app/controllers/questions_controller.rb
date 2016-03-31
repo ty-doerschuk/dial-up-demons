@@ -37,5 +37,9 @@ post '/questions/:id/votes' do
       @question.votes.first.destroy
     end
   end
-  redirect "/questions/#{params[:id]}"
+  if request.xhr?
+    "Votes: #{@question.votes.count}"
+  else
+    redirect "/questions/#{params[:id]}"
+  end
 end

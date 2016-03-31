@@ -1,22 +1,22 @@
-<h1><%= @question.title.capitalize %></h1>
+<h1><%= question.title.capitalize %></h1>
 
-<form for="votes" action="/questions/<%= @question.id %>/votes" method='post'>
+<form for="votes" action="/questions/<%= question.id %>/votes" method='post'>
   <input type="submit" name="vote" value="vote up">
   <input type="submit" name="vote" value="vote down">
 </form>
 
-<p>Votes: <%= @question.votes.count %></p>
+<p>Votes: <%= question.votes.count %></p>
 
 <div class="question">
   <p>
-    <%= @question.text %>
+    <%= question.text %>
   </p>
 </div>
 
 <h2>Answers</h2>
 <div class="answers">
   <ul>
-    <% @question.answers.each do |answer| %>
+    <% question.answers.each do |answer| %>
     <li><a href="/answers/<%= answer.id %>"><%= answer.text %></a></li>
       <ul>
       <li><% answer.comments.each do |answer_comment| %>
@@ -28,20 +28,20 @@
 </div>
 
 <form method="GET" action="/answers/new">
-  <input type="hidden" name="question_id" value="<%= @question.id %>">
+  <input type="hidden" name="question_id" value="<%= question.id %>">
   <input type="submit" value="ANSWER THIS QUESTION!!">
 </form>
 
 <h2>Comments</h2>
 <div class="comments">
   <ul>
-    <% @question.comments.each do |comment| %>
+    <% question.comments.each do |comment| %>
     <li><%= comment.text %></li>
     <% end %>
   </ul>
 
 <form method="GET" action="/comments/new">
-  <input type="hidden" name="question_id" value="<%= @question.id %>">
+  <input type="hidden" name="question_id" value="<%= question.id %>">
   <input type="hidden" name="type" value="Question">
   <input type="submit" value="Comment!">
 </form>

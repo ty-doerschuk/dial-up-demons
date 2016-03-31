@@ -25,7 +25,7 @@ end
 
 get '/questions/:id' do
   @question = Question.find(params[:id])
-  erb :'questions/show'
+  erb :'questions/show', locals: {question: @question}
 end
 
 post '/questions/:id/votes' do

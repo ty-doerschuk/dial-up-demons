@@ -8,7 +8,4 @@ class Question < ActiveRecord::Base
   has_many :answers
   has_one :favorite_answer, through: :answers
 
-  def vote_count
-    self.votes
-  end
 end

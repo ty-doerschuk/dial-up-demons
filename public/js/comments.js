@@ -63,9 +63,46 @@ $(document).ready(function() {
       request.done(function(response){
         $that.remove();
         $(".a-comment").show();
-        console.log(response);
         $(".comments ul").append(response);
       })
+    });
+  });
+
+  $(".comments > form").on("click", function(){
+    event.preventDefault();
+
+    var $that = $(this);
+    var url = $(this).attr('action');
+    var data = $(this).serialize();
+
+    var request = $.ajax({
+      url: url,
+      data: data
+    });
+
+    request.done(function(response){
+      $that.hide();
+      $(".comments").append(response);
+    });
+  });
+
+  $(".comments").on("submit", "._q_c_form", function(){
+    event.preventDefault();
+
+    var $that = $(this);
+    var url = $(this).attr('action');
+    var data = $(this).serialize();
+
+    var request = $.ajax({
+      url: url,
+      data: data,
+      method: "post"
+    });
+
+    request.done(function(response){
+      $that.hide();
+      $(".comments").show();
+      $("ul").append(response);
     });
   });
 

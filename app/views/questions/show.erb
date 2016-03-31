@@ -13,13 +13,20 @@
   <p>
     <%= question.text %>
   </p>
+  <p>
+    Posted By: <%= question.author.username %>
+  </p>
 </div>
 
 <h2>Comments</h2>
 <div class="comments">
   <ul>
+    <% if question.comments.length == 0 %>
+      There are no comments!<br>
+      Be the first commenter!<br>
+    <% end %>
     <% @question.comments.each do |comment| %>
-    <li><%= comment.text %></li>
+    <li> -- "<%= comment.text %>" - <%= comment.author.username %> </li>
     <% end %>
   </ul>
 
@@ -37,7 +44,18 @@
 <div class="answers">
   <ul>
     <% @question.answers.each do |answer| %>
-    <li><a href="/answers/<%= answer.id %>"><%= answer.text %></a>
+    <li><a href="/answers/<%= answer.id %>">"<%= answer.text %>"</a> - 
+      <%= answer.author.username %>
+      <% if @question.favorite_answer.id == answer.id %>
+          <img src="/images/estrella.gif" height="2%" width="2%">
+      <% end %>
+      <br><br>
+      Comments
+      <ul>
+      <li id="comments"><% answer.comments.each do |answer_comment| %>
+        <%= "-- \"" + answer_comment.text + "\"" %> - <%= answer_comment.author.username %>
+      <% end %></li>
+      </ul>
       <p id="answer-<%= answer.id %>-votes">Votes: <%= answer.votes.count %></p>
         <% if logged_in? %>
           <form for="votes" action="/answers/<%= answer.id %>/votes" method='post'>
@@ -46,11 +64,7 @@
           </form>
         <% end %>
     </li>
-      <ul>
-      <li><% answer.comments.each do |answer_comment| %>
-        <%= "-- \"" + answer_comment.text + "\"" %>
-      <% end %></li>
-        </ul>
+      
     <% end %>
   </ul>
 </div>

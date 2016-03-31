@@ -1,7 +1,37 @@
 <h1><%= @user.username.capitalize %>'s Profile</h1>
-<h2>My Questions</h2>
-<% @user.questions.each do |q| %>
-  <%= q.title %>
+
+<% if @user.status %>
+  <h4>Current Status: <%= @user.status %></h4>
 <% end %>
+
+<h3>Questions Asked: <%= @user.questions.length %></h3>
+<h3>Answers Posted: <%= @user.answers.length %></h3>
+<h3>Comments Left:	 <%= @user.comments.length %></h3>
+
+<h2>My Questions</h2>
+
+
+<div id="user-questions">
+<% @user.questions.each do |q| %>
+  <a href="/questions/<%= q.id %>"><%= q.title %></a><br>
+<% end %>
+</div>
+
 <h2>My Answers</h2>
+
+<div id="user-answers">
+<% @user.answers.each do |a| %>
+  <a href="/answers/<%= a.id %>"><%= a.text %></a> <br>(<%= a.question.title %>)<br><br>
+<% end %>
+</div>
+
 <h2>My Comments</h2>
+
+<div id="comments">
+<% @user.comments.each do |c| %>
+  -- "<%= c.text %>"<br>
+<% end %>
+</div>
+
+<br><br>
+<img src="/images/construct.gif"><br><br>

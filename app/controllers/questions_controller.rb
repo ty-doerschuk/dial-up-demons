@@ -33,6 +33,17 @@ post '/questions' do
   end
 end
 
+# add answer to fave answer of question
+patch '/questions' do 
+  if session[:user_id]
+    question = Question.find(params[:question_id])
+    fave_answer = Answer.find(params[:answer_id])
+    question.favorite_answer = fave_answer
+    question.save
+  end
+  redirect "/questions/#{params[:question_id]}"
+end
+
 get '/questions/:id' do
   @question = Question.find(params[:id])
   erb :'questions/show', locals: {question: @question}

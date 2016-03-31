@@ -7,6 +7,7 @@
       <% end %>
     </ul>
 <% end %>
+<br><br>  
 <form id="registration" action="/users" method="post">
   <label for="new_username">Screen Name: </label>
   <input id="new_username" name="user[username]" type="text" value="<%= @user.try(:username)%>"><br>
@@ -22,3 +23,6 @@
 
   <input id="sign-up-button" type="submit" value="Register">
 </form>
+
+<br><br>
+<img src="/images/doge3.gif"><br><br>

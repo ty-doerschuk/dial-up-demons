@@ -1,11 +1,11 @@
 <h1><%= @question.title.capitalize %></h1>
 
 <form for="votes" action="/questions/<%= @question.id %>/votes" method='post'>
-  <input class="vote up" type="submit" name="vote" value="vote up">
-  <input class="vote down" type="submit" name="vote" value="vote down">
+  <input class="vote up" type="image" name="vote" value="vote up" src="/images/up.gif-c200" width="5%" height="5%">
+  <input class="vote down" type="image" name="vote" value="vote down" src="/images/down.gif-c200" width="5%" height="5%">
 </form>
 
-<p id="question-votes">Votes: <%= @question.votes.count %></p>
+<p class="votes-text" id="question-votes">Votes: <%= @question.votes.count %></p>
 
 <div class="question">
   <p>
@@ -35,8 +35,8 @@
     <li><a href="/answers/<%= answer.id %>"><%= answer.text %></a>
       <p id="answer-<%= answer.id %>-votes">Votes: <%= answer.votes.count %></p>
       <form for="votes" action="/answers/<%= answer.id %>/votes" method='post'>
-        <input class="vote up"type="submit" name="vote" value="vote up">
-        <input class="vote down"type="submit" name="vote" value="vote down">
+        <input class="vote up" type="image" name="vote" value="vote up" src="/images/up.gif-c200" width="5%" height="5%">
+        <input class="vote down" type="image" name="vote" value="vote down" src="/images/down.gif-c200" width="5%" height="5%">
       </form>
     </li>
       <ul>
@@ -52,4 +52,8 @@
   <input type="hidden" name="question_id" value="<%= @question.id %>">
   <input type="submit" value="ANSWER THIS QUESTION!!">
 </form>
+
+<br><br>
+<center><img src="/images/rad.gif"></center><br><br>
+
 

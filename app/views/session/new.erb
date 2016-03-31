@@ -4,16 +4,16 @@
 <% end %>
 
 
-<form action="/session" method="post">
-  <label for="email">Email</label>
-  <input id="email" name="user[email]" type="text" value="<%= @user.try(:email)%>">
+<form id="sign-in" action="/session" method="post">
+  <label for="email">E-Mail: </label>
+  <input id="email" name="user[email]" type="text" value="<%= @user.try(:email)%>"><br>
 
-  <label for="password">Password</label>
-  <input id="password" name="user[password]" type="password">
+  <label for="password">PassWord: </label>
+  <input id="password" name="user[password]" type="password"><br>
 
-  <label for="status">status</label>
-  <input id="status" name="user[status]" type="text" value="<%= @user.try(:status)%>">
+  <label for="status">Status: </label>
+  <input id="status" name="user[status]" type="text" value="<%= @user.try(:status)%>"><br>
 
-  <input type="submit" value="Login">
+  <input class="sign-in-button" type="submit" value="SIGN IN!">
 </form>
 

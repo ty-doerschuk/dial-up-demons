@@ -1,5 +1,7 @@
 body {
   text-align: center;
+  background: url("../images/bg_stars.gif");
+  background-repeat: repeat;
 }
 
 li {
@@ -8,4 +10,106 @@ li {
 
 .add-question {
   text-decoration: none;
+}
+
+a:hover {
+	background-color: yellow;
+}
+
+a img {
+	background: none;
+}
+
+a {
+	/*background-color: lightgrey;	*/
+	color: hotpink;
+	font-family: courier;
+	text-align: justify;
+	font-size: 1.25em;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;	
+	text-decoration: none;
+}
+
+#registration {
+  text-align: center;
+  border: 2px solid yellow;
+  border-radius: 10px;
+  width: 30%;
+  padding: 5px;
+  margin: 0 auto;
+  background: linear-gradient(black, grey);
+  color: white;
+  font-style: bold;
+}
+
+#sign-in {
+  text-align: center;
+  border: 2px solid yellow;
+  border-radius: 10px;
+  width: 30%;
+  padding: 5px;
+  margin: 0 auto;
+  background: linear-gradient(black, grey);
+  color: white;
+  font-style: bold;
+}
+
+#email {
+  width: 50%;
+}
+
+#password {
+  width: 50%;
+}
+
+#sign-up-button {
+  width: 30%;
+  background: orange;
+  color: white;
+  box-shadow: 2px 2px 5px white;
+}
+
+.question {
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	color: #67C8FF;
+	font-size: 1.15em;
+}
+
+.votes-text {
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	color: hotpink;
+	font-size: 0.9em;
+}
+
+.answer {
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	color: #67C8FF;
+	font-size: 1.35em;
+}
+
+input {
+  margin: 5px;
+  color: black;
+}
+
+h1 {
+    color: yellow;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    width: 75%;
+    float: both;
+    margin: 0 auto;
+    font-family: courier;
+}
+
+h2 {
+	color: #83F52C;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	font-family: courier;
+}
+
+h3 {
+	float: both;
+	margin: 0 auto;
+	text-align: center;
+	font-family: courier;
 }

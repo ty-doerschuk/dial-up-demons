@@ -18,16 +18,18 @@
   <title></title>
 </head>
 <body>
+  <br>
   <nav class="navbar">
-   <a class="font-face" href='/'>home</a>
+   <a class="font-face" href='/'><img src="/images/home.jpg"></a><br><br>
    <div class="other-nav-links">
 
-      <a href='/users/new'>register</a>
-      <a href='/session/new'>login</a>
-      <a href='/session/logout'>logout</a>
+      <a href='/users/new'><img src="/images/icon3.jpg"></a>
+      <a href='/session/new'><img src="/images/icon2.jpg"></a>
+      <a href='/session/logout'><img src="/images/icon4.jpg"></a>
 
     </div>
   </nav>
   <%= yield %>
 </body>
+<audio src="/audio/enter.ogg" preload="auto" controls type="audio/ogg" autoplay></audio>
 </html>

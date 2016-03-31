@@ -6,7 +6,7 @@
 
 <h3>Questions Asked: <%= @user.questions.length %></h3>
 <h3>Answers Posted: <%= @user.answers.length %></h3>
-<h3>Comments Left: <%= @user.comments.length %></h3>
+<h3>Comments Left:	 <%= @user.comments.length %></h3>
 
 <h2>My Questions</h2>
 
@@ -21,7 +21,7 @@
 
 <div id="user-answers">
 <% @user.answers.each do |a| %>
-  <a href="/answers/<%= a.id %>"><%= a.text %></a> <br>(<%= a.question.title %>)<br>
+  <a href="/answers/<%= a.id %>"><%= a.text %></a> <br>(<%= a.question.title %>)<br><br>
 <% end %>
 </div>
 

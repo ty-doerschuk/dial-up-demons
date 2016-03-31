@@ -33,6 +33,10 @@
 <h2>Comments</h2>
 <div class="comments">
   <ul>
+    <% if answer.comments.length == 0 %>
+      There are no comments!<br>
+      Be the first commenter!<br>
+    <% end %>
     <% answer.comments.each do |comment| %>
     <li>"<%= comment.text %>" - <%= comment.author.username %></li>
     <% end %>

@@ -1,4 +1,5 @@
-<h1><%= @question.title.capitalize %></h1>
+<h1><%= question.title.capitalize %></h1>
+
 
 <form for="votes" action="/questions/<%= @question.id %>/votes" method='post'>
   <input class="vote up" type="image" name="vote" value="vote up" src="/images/up.gif-c200" width="5%" height="5%">
@@ -9,7 +10,7 @@
 
 <div class="question">
   <p>
-    <%= @question.text %>
+    <%= question.text %>
   </p>
 </div>
 
@@ -31,6 +32,7 @@
 <h2>Answers</h2>
 <div class="answers">
   <ul>
+
     <% @question.answers.each do |answer| %>
     <li><a href="/answers/<%= answer.id %>"><%= answer.text %></a>
       <p id="answer-<%= answer.id %>-votes">Votes: <%= answer.votes.count %></p>
@@ -49,11 +51,9 @@
 </div>
 
 <form method="GET" action="/answers/new">
-  <input type="hidden" name="question_id" value="<%= @question.id %>">
+  <input type="hidden" name="question_id" value="<%= question.id %>">
   <input type="submit" value="ANSWER THIS QUESTION!!">
 </form>
 
 <br><br>
 <center><img src="/images/rad.gif"></center><br><br>
-
-

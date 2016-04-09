@@ -1,4 +1,4 @@
-before '/answer/*' do
+before '/answers/*' do
   redirect "/session/new" unless logged_in?
 end
 
